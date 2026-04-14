@@ -208,8 +208,8 @@ grep "persistent-data" mission/evidence/terminal.log | tail -n 1
 ```bash
 # Git 사용자 정보 확인
 grep "git config --list | grep" mission/evidence/terminal.log
-grep "user.name=okbaronok23110" mission/evidence/terminal.log
-grep "user.email=okbaronok23110@users.noreply.github.com" mission/evidence/terminal.log
+grep "user.name=jongekim" mission/evidence/terminal.log
+grep "user.email=jongeunkim@kakao.com" mission/evidence/terminal.log
 
 # Git 기본 브랜치 확인
 grep "init.defaultbranch=main" mission/evidence/terminal.log
