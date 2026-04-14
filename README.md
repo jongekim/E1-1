@@ -27,8 +27,10 @@
 - [x] 바인드 마운트 반영 검증
 - [x] 볼륨 영속성 검증
 - [x] Git 설정 점검 (`git config --list`)
-- [x] GitHub 연동 증거 확보 (CLI `git push` 성공 로그로 대체)
+- [x] GitHub 연동 증거 확보 (CLI `git push` 성공 로그)
 - [x] 포트 매핑 접속 증거 확보 (`curl` 응답 로그)
+- [ ] VSCode GitHub 로그인/연동 스크린샷 첨부 (수동)
+- [ ] 브라우저 주소창 포함 접속 스크린샷 첨부 (수동)
 
 ## 4) 디렉토리 구조
 ```text
@@ -80,7 +82,7 @@
 - 실행: `docker run -d --name mission-web-8081 -p 8081:80 mission-web:1.0`
 - 확인: `curl -i http://localhost:8080`, `curl -i http://localhost:8081`
 - 결과 위치: `mission/evidence/terminal.log`
-- 비고: 본 결과물은 브라우저 캡처 대신 과제 허용 기준인 `curl` 응답 로그를 증거로 사용
+- 비고: 본 결과물은 `curl` 응답 로그를 증거로 기록했으며, 브라우저 주소창 캡처는 수동 추가가 필요
 
 ### G. 바인드 마운트 검증
 - 실행: `docker run -d --name bind-web -p 8090:80 -v <host>/bind_site:/usr/share/nginx/html nginx:alpine`
@@ -98,6 +100,93 @@
 - 확인 명령: `git config --list`
 - 결과 위치: `mission/evidence/terminal.log`
 - 연동 증거: `git push` 성공 출력(원격 반영) 및 `git status`/`git log` 결과를 로그에 기록
+
+## 11) 명령/출력 발췌 (코드블록)
+아래는 평가 항목 대응을 위해 `mission/evidence/terminal.log`에서 발췌한 핵심 명령/출력이다.
+
+```bash
+$ pwd
+/Users/okbaronok23110/Desktop/E1-1/mission
+
+$ ls -la
+drwxr-xr-x ... mission
+...
+```
+
+```bash
+$ chmod 700 perm_lab/dir1
+$ chmod 600 perm_lab/file1.txt
+$ ls -ld perm_lab/dir1 && ls -l perm_lab/file1.txt
+drwx------ ... perm_lab/dir1
+-rw------- ... perm_lab/file1.txt
+```
+
+```bash
+$ docker --version
+Docker version 28.5.2, build ecc6942
+
+$ docker info
+Context:    orbstack
+Operating System: OrbStack
+...
+```
+
+```bash
+$ docker run --name hw-test hello-world
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+
+```bash
+$ docker run -dit --name ubuntu-lab ubuntu bash
+$ docker exec ubuntu-lab ls /
+bin
+boot
+...
+$ docker exec ubuntu-lab bash -lc 'echo hello-from-ubuntu-container'
+hello-from-ubuntu-container
+```
+
+```bash
+$ docker build -t mission-web:1.0 .
+#7 naming to docker.io/library/mission-web:1.0 done
+```
+
+```bash
+$ curl -i http://localhost:8080 | head -n 20
+HTTP/1.1 200 OK
+Server: nginx/1.29.8
+
+$ curl -i http://localhost:8081 | head -n 20
+HTTP/1.1 200 OK
+Server: nginx/1.29.8
+```
+
+```bash
+$ curl -s http://localhost:8090
+Bind Mount Version 1
+
+$ curl -s http://localhost:8090
+Bind Mount Version 2 (Host Changed)
+```
+
+```bash
+$ docker volume create mission_data
+mission_data
+
+$ docker exec vol-test-2 bash -lc 'cat /data/keep.txt'
+persistent-data
+```
+
+```bash
+$ git config --list | grep -E "user.name|user.email|init.defaultbranch"
+init.defaultbranch=main
+user.name=okbaronok23110
+user.email=okbaronok23110@users.noreply.github.com
+
+$ cd /Users/okbaronok23110/Desktop/E1-1 && git push
+Everything up-to-date
+```
 
 ## 6) 핵심 기술 원리
 
