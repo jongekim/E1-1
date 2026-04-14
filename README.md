@@ -29,8 +29,8 @@
 - [x] Git 설정 점검 (`git config --list`)
 - [x] GitHub 연동 증거 확보 (CLI `git push` 성공 로그)
 - [x] 포트 매핑 접속 증거 확보 (`curl` 응답 로그)
-- [ ] VSCode GitHub 로그인/연동 스크린샷 첨부 (수동)
-- [ ] 브라우저 주소창 포함 접속 스크린샷 첨부 (수동)
+- [x] VSCode GitHub 로그인/연동 스크린샷 첨부
+- [x] 브라우저 주소창 포함 접속 스크린샷 첨부
 
 ## 4) 디렉토리 구조
 ```text
@@ -82,7 +82,7 @@
 - 실행: `docker run -d --name mission-web-8081 -p 8081:80 mission-web:1.0`
 - 확인: `curl -i http://localhost:8080`, `curl -i http://localhost:8081`
 - 결과 위치: `mission/evidence/terminal.log`
-- 비고: 본 결과물은 `curl` 응답 로그를 증거로 기록했으며, 브라우저 주소창 캡처는 수동 추가가 필요
+- 브라우저 스크린샷: `mission/screenshots/web-8080.png`, `mission/screenshots/web-8081.png`
 
 ### G. 바인드 마운트 검증
 - 실행: `docker run -d --name bind-web -p 8090:80 -v <host>/bind_site:/usr/share/nginx/html nginx:alpine`
