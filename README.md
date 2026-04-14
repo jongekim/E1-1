@@ -27,8 +27,8 @@
 - [x] 바인드 마운트 반영 검증
 - [x] 볼륨 영속성 검증
 - [x] Git 설정 점검 (`git config --list`)
-- [ ] VSCode GitHub 로그인 화면 캡처 첨부(수동)
-- [ ] 브라우저 주소창 포함 접속 캡처 첨부(수동)
+- [ ] VSCode GitHub 로그인 화면 캡처 첨부(수동, 파일명: `vscode-github-login.png`)
+- [ ] 브라우저 주소창 포함 접속 캡처 첨부(수동, 파일명: `web-8080.png`, `web-8081.png`, `web-8090.png`)
 
 ## 4) 디렉토리 구조
 ```text
@@ -81,6 +81,10 @@
 - 확인: `curl -i http://localhost:8080`, `curl -i http://localhost:8081`
 - 결과 위치: `mission/evidence/terminal.log`
 - 스크린샷 위치(수동): `mission/screenshots/`
+- 권장 파일명:
+  - `mission/screenshots/web-8080.png`
+  - `mission/screenshots/web-8081.png`
+  - `mission/screenshots/web-8090.png`
 
 ### G. 바인드 마운트 검증
 - 실행: `docker run -d --name bind-web -p 8090:80 -v <host>/bind_site:/usr/share/nginx/html nginx:alpine`
@@ -97,7 +101,25 @@
 ### I. Git/GitHub
 - 확인 명령: `git config --list`
 - 결과 위치: `mission/evidence/terminal.log`
-- VSCode GitHub 연동 증거(수동): `mission/screenshots/`
+- VSCode GitHub 연동 증거(수동): `mission/screenshots/vscode-github-login.png`
+
+## 5-1) 수동 캡처 2분 마무리
+아래 4장만 추가하면 체크리스트가 100% 완료된다.
+
+1. 브라우저에서 `http://localhost:8080` 접속 후 주소창이 보이게 저장
+  - `mission/screenshots/web-8080.png`
+2. 브라우저에서 `http://localhost:8081` 접속 후 주소창이 보이게 저장
+  - `mission/screenshots/web-8081.png`
+3. 브라우저에서 `http://localhost:8090` 접속 후 주소창이 보이게 저장
+  - `mission/screenshots/web-8090.png`
+4. VSCode에서 GitHub 로그인/연동 상태 화면 저장
+  - `mission/screenshots/vscode-github-login.png`
+
+첨부 확인 링크:
+- [8080 접속 캡처](mission/screenshots/web-8080.png)
+- [8081 접속 캡처](mission/screenshots/web-8081.png)
+- [8090 접속 캡처](mission/screenshots/web-8090.png)
+- [VSCode GitHub 연동 캡처](mission/screenshots/vscode-github-login.png)
 
 ## 6) 핵심 기술 원리
 
