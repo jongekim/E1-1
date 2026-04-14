@@ -661,3 +661,20 @@ $ cd /Users/okbaronok23110/Desktop/E1-1 && git status --short
 ?? mission/
 
 $ cd /Users/okbaronok23110/Desktop/E1-1 && git add README.md mission
+
+$ cd /Users/okbaronok23110/Desktop/E1-1 && git commit -m "feat: complete workstation mission artifacts"
+[main (최상위-커밋) ab79be4] feat: complete workstation mission artifacts
+ 9 files changed, 856 insertions(+)
+ create mode 100644 README.md
+ create mode 100644 mission/Dockerfile
+ create mode 100644 mission/app/index.html
+ create mode 100644 mission/bind_site/index.html
+ create mode 100644 mission/evidence/terminal.log
+ create mode 100644 mission/perm_lab/file1.txt
+ create mode 100644 mission/practice/a/empty.txt
+ create mode 100644 mission/practice/a/hello.txt
+ create mode 100644 mission/runlog.sh
+
+$ cd /Users/okbaronok23110/Desktop/E1-1 && git status --short
+ M mission/evidence/terminal.log
+?? To_Do.txt
